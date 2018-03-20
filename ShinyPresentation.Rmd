@@ -1,0 +1,49 @@
+---
+title: "Shiny Application and Reproducible Pitch"
+author: "rcritika"
+date: "March 20, 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## About the Course Project
+
+This is a deliverable for the course Developing Data Products as part of the Coursera Data Science Specialization.
+
+Instructions:
+
+Write a shiny application with associated supporting documentation. The documentation should be thought of as whatever a user will need to get started using your application.
+Deploy the application on Rstudio's shiny server
+Share the application link by pasting it into the provided text box
+Share your server.R and ui.R code on github
+
+## How to use the application
+
+Using the data provided by Galton Families dataset, we fit a linear model to predict a child's height based on the gender and parent's average height.
+
+The application is running on (https://rcritika.shinyapps.io/Shiny_Product/)
+
+ui.R, and Server.R Code in my github repository (https://github.com/rcritika/Shiny-Developing-Data-Products)
+
+## Galton Families Dataset
+
+The data used in the app comes from the GaltonFamilies dataset.
+
+```{r echo = TRUE}
+library(HistData)
+data(GaltonFamilies)
+summary(GaltonFamilies)
+```
+
+## Plot
+
+```{r pressure}
+library(HistData)
+data(GaltonFamilies)
+plot(jitter(GaltonFamilies$childHeight) ~ GaltonFamilies$midparentHeight,xlab="Average Height of the Parents (in inches)",ylab="Height of the Child (in inches)",main="Scatterplot of Galton Family Data",pch=19,frame.plot=FALSE,col=ifelse(GaltonFamilies$gender=="female", "pink", "light blue"))
+legend(65,80,pch=c(19,19),col=c("pink","light blue"),c("female", "male"),bty="o",cex=.8)
+```
+
